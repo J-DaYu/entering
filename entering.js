@@ -1,4 +1,19 @@
-var TextInput = function(options){
+
+"use strict";
+(function (factory) {
+    if (typeof exports === 'object') {
+        // Node. Does not work with strict CommonJS, but
+        // only CommonJS-like enviroments that support module.exports,
+        // like Node.
+        module.exports = factory;
+    } else if (typeof define === 'function' && define.amd) {
+        // AMD. Register as an anonymous module.
+        define(factory);
+    } else {
+        // Browser globals
+        window.TextInput = factory;
+    }
+})(function (options) {
 	var cTextIndex 	= 0;
 	var index 		= 0;
 	var textArr		= options.texts;
@@ -77,4 +92,4 @@ var TextInput = function(options){
 			}
 		}
 	}
-};
+});
