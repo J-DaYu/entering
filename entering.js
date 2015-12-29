@@ -6,18 +6,16 @@ var TextInput = function(options){
 	var deleteSpeed = options.deleteSpeed;
 	var interval	= options.interval;
 	var timer 		= null;
-	var rawText		= '';
 	var newTexts	= '';
 	var textLength	= 0;
 
 	var split 		= '<span class="split'+(options.css3 ? ' css3-fade' : '')+'" id="split"></span>';
 
 	function write(text, seconds){
-		rawText 	= text;
-		textLength 	= rawText.length;
+		textLength 	= text.length;
 		newTexts 	= [];
 		index 		= 0;
-		var w = function(){
+		function w(){
 			writeToDom(newTexts.join(''));
 			if(index > textLength - 1){
 				clearTimer();
@@ -28,21 +26,20 @@ var TextInput = function(options){
 					});
 				}
 			}else{
-				newTexts.push(rawText[index]);
+				newTexts.push(text[index]);
 				timer = setTimeout(function(){
 					index++;
 					w();
 				}, seconds);
 			}
 		};
-		return w();
+		w();
 	}
 	function backspace(text, seconds){
-		rawText 	= text;
-		textLength 	= rawText.length;
-		newTexts 	= rawText.split('');
+		textLength 	= text.length;
+		newTexts 	= text.split('');
 		index 		= textLength - 1;
-		var b = function(){
+		function b(){
 			writeToDom(newTexts.join(''));
 			if(index < 0){
 				clearTimer();
@@ -57,7 +54,7 @@ var TextInput = function(options){
 				}, seconds);
 			}
 		};
-		return b();
+		b();
 	}
 
 	function clearTimer(){
@@ -73,7 +70,6 @@ var TextInput = function(options){
 	return {
 		begin: function(){
 			write(textArr[cTextIndex], writeSpeed);
-
 			if(!options.css3){
 				setInterval(function(){
 					document.getElementById('split').style.opacity = document.getElementById('split').style.opacity === '1' ? '0' : '1';
