@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>Input</title>
+	<style type="text/css">
+		body, html{
+			margin: 0;
+			min-height: 100%;
+			background-color: #181818;
+			color: #29FA15;
+		}
+		@keyframes fade {
+		  0%{
+		    opacity: 1;
+		  }
+		  100%{
+		    opacity: 0;
+		  }
+		}
+		@-webkit-keyframes fade {
+		  0%{
+		    opacity: 1;
+		  }
+		  100%{
+		    opacity: 0;
+		  }
+		}
+		.css3-fade{
+			-webkit-animation: fade .5s linear infinite;
+			-o-animation: fade .5s linear infinite;
+			animation: fade .5s linear infinite;
+		}
+		.split{
+		    display: inline-block;
+		    margin-bottom: -3px;
+		    width: 5px;
+		    padding: 0;
+		    background-color: #29FA15;
+		    height: 20px;
+    		margin-left: 3px;
+		}
+		#input{
+			margin: auto;
+			padding: 20px;
+			word-break: break-all;
+			word-wrap: break-word;
+			letter-spacing: 2px;
+			font-size: 20px;
+			font-family: 'Microsoft YAHEI'
+		}
+	</style>
+</head>
+<body>
+	<div id="input"></div>
+	<script type="text/javascript" src="entering.js"></script>
+	<script type="text/javascript">
+		var input = new TextInput({
+			box 		: document.getElementById('input'),
+			interval 	: 1000,
+			writeSpeed	: 100,
+			deleteSpeed	: 80,
+			css3		: true,
+			texts 		: [
+				'PHP是最牛逼的开发语言！',
+				'C语言是最牛逼的开发语言！',
+				'萝卜白菜各有所爱，只要你用的好，什么语言都牛逼！'
+			]
+		});
+		input.begin();
+
+	</script>
+</body>
+</html>
