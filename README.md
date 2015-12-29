@@ -2,6 +2,10 @@
 
 实现简单的输入和修改文本的动画效果
 ```
+    <!--引入js文件-->
+    <script type="text/javascript" src="entering.js"></script>
+```     
+```
     var input = new TextInput({
         box             : document.getElementById('input'),  
         interval        : 1000, //输入和删除文本之间的间隔
